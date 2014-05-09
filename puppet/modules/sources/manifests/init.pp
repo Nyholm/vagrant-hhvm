@@ -15,17 +15,17 @@ class sources {
 		location		=> "http://dl.hhvm.com/ubuntu",
 		release			=> "precise",
 		repos				=> "main",
-		key        => '5A16E7281BE7A449',
-                key_server => 'keys.gnupg.net',
+         key        => '5A16E7281BE7A449',
+         key_server => 'keys.gnupg.net',
 		include_src	=> false
 	}
 
-	apt::source { "puppet_ubuntu_archiv_quantal_universe" :
-		location    => "http://archive.ubuntu.com/ubuntu",
-		release	    => "quantal",
-		repos	    => "main universe",
-		key         => '3B4FE6ACC0B21F32',
-		key_server  => 'keys.gnupg.net',
-		include_src => false
+	apt::source { "puppet_ubuntu_archive_quantal_universe" :
+		location   => "http://archive.ubuntu.com/ubuntu",
+		release	   => "quantal",
+		repos	   => "main universe",
+        key        => '3B4FE6ACC0B21F32',
+        key_server => 'keys.gnupg.net',
+		include_src	=> false
 	}
 }

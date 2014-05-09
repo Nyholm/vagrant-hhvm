@@ -14,23 +14,16 @@ class hhvm {
 		notify => Service['hhvm'],
 	}
 
-	file { 'vagrant-hhvm.localhost' :
-		path => '/etc/nginx/sites-enabled/vagrant-hhvm.localhost',
+	file { 'hhvm.local' :
+		path => '/etc/nginx/sites-enabled/hhvm.local',
 		ensure => file,
 		owner => root,
 		group => root,
-		source => "puppet:///modules/hhvm/vagrant-hhvm.localhost",
+		source => "puppet:///modules/hhvm/hhvm.local",
 		require => Package['nginx'],
 		notify => Service['nginx'],
 	}
 
-	file { 'var/www' :
-		path => '/var/www',
-		ensure => directory,
-		owner => www-data,
-		group => www-data,
-		purge => false,
-	}
 
 	file { 'index.php' :
 		path => '/var/www/index.php',
@@ -39,6 +32,11 @@ class hhvm {
 		group => root,
 		source => "puppet:///modules/hhvm/index.php",
 	}
+
+    file { '.hhconfig' :
+      path => '/var/www/.hhconfig',
+      ensure => file,
+    }
 
 	service { 'hhvm':
 		ensure => running,

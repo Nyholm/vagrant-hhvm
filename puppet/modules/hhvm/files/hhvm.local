@@ -1,6 +1,6 @@
 server {
   listen *:80;
-  server_name *.vagrant-hhvm.localhost vagrant-hhvm.localhost;
+  server_name *.hhvm.local hhvm.local;
 
   location / {
     root /var/www;
@@ -20,7 +20,7 @@ server {
 # SSL part, you can uncomment lines below if you don't want HTTPS support
 # server {
 #  listen 443 default ssl;
-#  server_name *.vagrant-hhvm.localhost vagrant-hhvm.localhost;
+#  server_name *.hhvm.local hhvm.local;
 #
 #  ssl_certificate      _PATH_TO_YOUR_SSL_CRT_FILE_;
 #	ssl_certificate_key   _PATH_TO_YOUR_SSL_CRT_KEY_;
@@ -32,7 +32,7 @@ server {
 
 #  location ~ \.php$ {
 #    proxy_set_header X-Real-IP $remote_addr;
-#    proxy_set_header Host vagrant-hhvm.localhost;
+#    proxy_set_header Host hhvm.local;
 #    proxy_pass   http://localhost:8080;
 #  }
 #}

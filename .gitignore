@@ -1,2 +1,5 @@
 .vagrant
 .DS_Store
+.vagrant/*
+/source/*
+!source/.gitkeep
