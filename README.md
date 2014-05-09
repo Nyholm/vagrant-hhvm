@@ -12,7 +12,7 @@ Do note that the machine might be lacking many things, since I am just getting t
 1. Make sure you have [VirtualBox](https://www.virtualbox.org/).
 2. [Install Vagrant](http://docs.vagrantup.com/v2/installation/).
 3. Clone this repository or download it as a zip.
-4. Add an entry in your host file for `vagrant-hhvm.localhost` with IP `192.168.99.99`
+4. Add an entry in your host file for `hhvm.local` with IP `192.168.99.99`
 5. In the terminal, go to the folder where you cloned or unzipped the files and type `vagrant up`.
 
 Step 4 is important because Nginx is configured to deny all anonymous requests, and only pass the request to HHVM by server name. You are free to change this, but I just like the idea: [Using nginx as Front Server to HipHop](https://github.com/facebook/hhvm/wiki/Using-nginx-as-Front-Server-to-HipHop#etcnginxsites-enableddefault)
