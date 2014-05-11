@@ -10,6 +10,12 @@ class nginx {
 		notify => Service['nginx'],
 	}
 
+    file { '/etc/nginx/hhvm.conf':
+        require => Package['nginx'],
+        source => "puppet:///modules/nginx/hhvm.conf",
+        notify => Service['nginx'],
+    }
+
 	file { 'nginx/sites-available':
 		path => '/etc/nginx/sites-available',
 		ensure => directory,
