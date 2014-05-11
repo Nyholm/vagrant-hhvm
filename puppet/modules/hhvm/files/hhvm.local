@@ -1,38 +1,22 @@
 server {
   listen *:80;
   server_name *.hhvm.local hhvm.local;
-
+  include hhvm.conf;
   location / {
     root /var/www;
     index  index.html index.php index.htm;
   }
-
-  location ~ \.php$ {
-        proxy_set_header   X-Real-IP        $remote_addr;
-        root /var/www;
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-  }
 }
 
-# SSL part, you can uncomment lines below if you don't want HTTPS support
-# server {
-#  listen 443 default ssl;
-#  server_name *.hhvm.local hhvm.local;
-#
-#  ssl_certificate      _PATH_TO_YOUR_SSL_CRT_FILE_;
-#	ssl_certificate_key   _PATH_TO_YOUR_SSL_CRT_KEY_;
+server {
+  listen *:80;
+  server_name *.sf.hhvm sf.hhvm;
+  root /srv/sf.hhvm/web;
+  include hhvm.conf;
 
-#  location / {
-#    root /var/www;
-#    index index.html index.php index.htm;
-#  }
-
-#  location ~ \.php$ {
-#    proxy_set_header X-Real-IP $remote_addr;
-#    proxy_set_header Host hhvm.local;
-#    proxy_pass   http://localhost:8080;
-#  }
-#}
+  rewrite ^/app\.php/?(.*)$ /$1 permanent;
+  try_files $uri @rewriteapp;
+  location @rewriteapp {
+          rewrite ^(.*)$ /app.php/$1 last;
+  }
+}
