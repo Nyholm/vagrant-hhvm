@@ -2,9 +2,12 @@ server {
   listen *:80;
   server_name *.hhvm.local hhvm.local;
   include hhvm.conf;
+
+  root /vagrant/source;
+
   location / {
-    root /var/www;
-    index  index.html index.php index.htm;
+
+    index  index.html index.php index.hh index.htm;
   }
 }
 

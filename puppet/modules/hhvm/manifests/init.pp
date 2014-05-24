@@ -4,12 +4,12 @@ class hhvm {
     require => Exec['apt-get update'],
   }
 
-  file { 'config.hdf' :
-    path => '/etc/hhvm/config.hdf',
+  file { 'server.ini' :
+    path => '/etc/hhvm/server.ini',
     ensure => file,
     owner => root,
     group => root,
-    source => "puppet:///modules/hhvm/config.hdf",
+    source => "puppet:///modules/hhvm/server.ini",
     require => Package['hhvm'],
     notify => Service['hhvm'],
   }
@@ -25,16 +25,16 @@ class hhvm {
   }
 
 
-  file { 'index.php' :
-    path => '/var/www/index.php',
+  file { 'index.hh' :
+    path => '/vagrant/source/index.hh',
     ensure => file,
     owner => root,
     group => root,
-    source => "puppet:///modules/hhvm/index.php",
+    source => "puppet:///modules/hhvm/index.hh",
   }
 
   file { '.hhconfig' :
-    path => '/var/www/.hhconfig',
+    path => '/vagrant/source/.hhconfig',
     ensure => file,
   }
 

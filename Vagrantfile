@@ -11,7 +11,7 @@ Vagrant::configure("2") do |config|
 	config.vm.network :private_network, ip: "192.168.99.99"
 
 	config.vm.provision :shell do |shell|
-		shell.inline = "mkdir -p /etc/puppet/modules; puppet module install --force puppetlabs/apt"
+		shell.inline = "mkdir -p /etc/puppet/modules; puppet module install --force puppetlabs/apt; puppet module install --force puppetlabs-stdlib"
 	end
 
 	config.vm.provision :puppet do |puppet|
